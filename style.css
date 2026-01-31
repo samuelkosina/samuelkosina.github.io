@@ -57,4 +57,39 @@ body {
 .project-card:hover img {
   opacity: 0.85;
 }
+.project-nav {
+  padding: 24px;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.project-nav a {
+  text-decoration: none;
+  color: #666;
+}
+
+.project-content {
+  padding: 24px;
+  max-width: 900px;
+}
+
+.project-content h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.project-info {
+  color: #777;
+  font-size: 0.85rem;
+  margin-bottom: 32px;
+}
+
+.project-content img {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
 
