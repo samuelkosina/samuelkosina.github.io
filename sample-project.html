@@ -3,37 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Detail</title>
+    <title>Project Detail | Independent Scroll</title>
     <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <div class="container">
-        <header class="row">
-            <div class="col-6"><a href="../index.html">← Close Project</a></div>
-            <div class="col-6 col-right">
+
+    <div class="split-wrapper">
+        
+        <div class="column-left">
+            <header>
+                <a href="../index.html">← Close Project</a>
+            </header>
+            <div style="margin-top: 2rem;">
+                <img src="../assets/work1.jpg" alt="Work 1">
+                <p class="caption">Hamish Fulton<br>Exhibition Catalog, 1992</p>
+                <br>
+                <img src="../assets/work3.jpg" alt="Work 3">
+                <p class="caption">Detail View</p>
+            </div>
+        </div>
+
+        <div class="column-right">
+            <header class="col-right">
                 Project Name<br>
                 <span class="caption">00.00.00 | Gravida: Egestas</span>
-            </div>
-        </header>
-
-        <div class="row">
-            <div class="col-6">
-                <img src="../assets/work1.jpg" alt="Work">
-                <p class="caption">Hamish Fulton<br>Exhibition Catalog, 1992</p>
-            </div>
-            <div class="col-6">
-                <img src="../assets/work2.jpg" alt="Work">
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-6 mobile-hide"></div>
-            <div class="col-6">
-                <p>Praesent bibendum a elit non efficitur. Etiam et velit vitae quam aliquet fermentum. Quisque sit amet nulla dictum, cursus erat a, tempus est.</p>
+            </header>
+            <div style="margin-top: 2rem;">
+                <p><strong>Project Description</strong></p>
+                <p>This column moves independently. You can have a very long text here that scrolls while the image on the left stays in place, or vice versa.</p>
                 <br>
-                <p>Sed laoreet, magna eget mattis tincidunt, felis tellus vestibulum augue, in lobortis mauris risus eu nunc.</p>
+                <p>Praesent bibendum a elit non efficitur. Etiam et velit vitae quam aliquet fermentum. Quisque sit amet nulla dictum, cursus erat a, tempus est. Sed laoreet, magna eget mattis tincidunt, felis tellus vestibulum augue, in lobortis mauris risus eu nunc.</p>
+                <br>
+                <img src="../assets/work2.jpg" alt="Work 2">
+                <br>
+                <p>Vivamus sed condimentum leo. Nunc efficitur, magna condimentum gravida egestas, ligula mauris posuere neque, sit amet sagittis dui velit vitae neque. Donec in dapibus arcu.</p>
             </div>
         </div>
+
     </div>
+
 </body>
 </html>
