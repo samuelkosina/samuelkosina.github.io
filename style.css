@@ -212,3 +212,39 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     /* ... předchozí kód ... */
     image-rendering: -webkit-optimize-contrast; /* Pro maximální ostrost v prohlížečích */
 }
+/* Šipky pro navigaci */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.3s ease;
+    user-select: none;
+    z-index: 10001;
+}
+
+.prev { left: 20px; }
+.next { right: 20px; }
+
+.prev:hover, .next:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Úprava Lightboxu pro flexibilitu */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    justify-content: center;
+    align-items: center;
+}
