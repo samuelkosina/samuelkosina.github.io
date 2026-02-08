@@ -124,3 +124,9 @@ header.header a:nth-child(3) { justify-self: end; }
         display: none;
     }
 }
+.profile-photo {
+    width: 180px;      /* Uprav si velikost podle potřeby */
+    height: auto;      /* Zachová poměr stran */
+    display: block;    /* Zajistí, že pod fotkou nebude mezera */
+    margin-bottom: 1rem; /* Mezera mezi fotkou a tvým mailem */
+}
