@@ -2,36 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Index</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header class="row">
-            <div class="col-6"><a href="index.html">Samuel Kosina </a></div>
-            <div class="col-3"><a href="index.html">Projects</a></div>
-            <div class="col-3 col-right"><a href="info.html">Information</a></div>
+
+<div class="split-container">
+    
+    <div class="column left-side">
+        <header>
+            <a href="index.html">Cargo Demo Template</a>
         </header>
 
-        <hr>
-
-        <section>
+        <div class="project-entry">
             <a href="projects/sample-project.html">
-                <img src="assets/project1.jpg" alt="Project Name">
+                <img src="assets/project1.jpg" alt="Project 1">
+                <p>Hamish Fulton, <i>Nepal</i><br>1977 [View..]</p>
             </a>
-            <div class="row" style="margin-top: 1rem;">
-                <div class="col-6">Project Name</div>
-                <div class="col-6">
-                    <strong>Hamish Fulton, <i>Nepal</i></strong><br>
-                    Exhibition Catalog, 1977<br><br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><br>
-                    <a href="projects/sample-project.html"><u>View..</u></a>
-                </div>
-            </div>
-        </section>
+        </div>
 
-        <hr>
+        <div class="project-entry">
+            <a href="projects/sample-project.html">
+                <img src="assets/project2.jpg" alt="Project 2">
+                <p>Hamish Fulton, <i>Walking Passed</i><br>1992 [View..]</p>
+            </a>
+        </div>
     </div>
+
+    <div class="column right-side">
+        <header style="text-align: right;">
+            <a href="info.html">Information</a>
+        </header>
+        <div style="margin-top: 5rem;">
+            <h1>Select a project on the left to view details.</h1>
+            <br>
+            <p>This is your landing area. When a user clicks a project, the content will load here (or navigate to the detail page).</p>
+        </div>
+    </div>
+
+</div>
+
 </body>
 </html>
