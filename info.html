@@ -2,23 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Information</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="split-container">
-    <div class="column left-side">
-        <header><a href="index.html">Cargo Demo Template</a></header>
-        <p>Profile & Contact</p>
-        <br>
-        <a href="mailto:hello@example.com">hello@example.com</a>
+    <div class="page-layout">
+        <header class="nav-header column-set">
+            <div style="flex: 2;">CV</div>
+            <div style="flex: 1; text-align: right;"><a href="index.html">✕</a></div>
+        </header>
+
+        <div class="column-set">
+            <div class="col-right">Profile</div>
+            <div class="col-left">
+                Cargo Demo Template<br>
+                <a href="mailto:hello@example.com">hello@example.com</a><br>
+                Cras ut dictum mi. Sed quis lorem semper...
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="column-set">
+            <div class="col-right">Education</div>
+            <div class="col-left">Vestibulum Euismod Ultrices<br>2023</div>
+        </div>
+
+        <p style="color: rgba(0,0,0,0.25); margin-top: 5rem;">Last Updated 24.10.31</p>
     </div>
-    <div class="column right-side">
-        <header style="text-align: right;"><a href="index.html">✕</a></header>
-        <h2>CV</h2>
-        <br>
-        <p>Education, Awards, and Employment history goes here...</p>
-    </div>
-</div>
 </body>
 </html>
