@@ -74,6 +74,20 @@
 </div>
         </div>
     </div>
+    <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
+    <span class="close-lightbox">&times;</span>
+    <img class="lightbox-content" id="lightbox-img">
+</div>
+
+<script>
+    // Funkce, která najde všechny obrázky a přidá jim možnost kliknutí
+    document.querySelectorAll('.col-6 img').forEach(image => {
+        image.onclick = () => {
+            document.getElementById('lightbox').style.display = 'flex';
+            document.getElementById('lightbox-img').src = image.src;
+        }
+    });
+</script>
 </body>
 </html>
         </div>
