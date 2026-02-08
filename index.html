@@ -2,45 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Portfolio | Index</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="split-container">
-    
-    <div class="column left-side">
-        <header>
-            <a href="index.html">Cargo Demo Template</a>
+    <div class="page-layout">
+        <header class="nav-header column-set">
+            <div style="flex: 2;"><a href="index.html">Cargo Demo Template</a></div>
+            <div style="flex: 1;"><a href="index.html">Index</a></div>
+            <div style="flex: 1; text-align: right;"><a href="info.html">Information</a></div>
         </header>
 
-        <div class="project-entry">
-            <a href="projects/sample-project.html">
-                <img src="assets/project1.jpg" alt="Project 1">
-                <p>Hamish Fulton, <i>Nepal</i><br>1977 [View..]</p>
+        <div class="page-content" style="margin-bottom: 2rem;">
+            GROUP 1
+        </div>
+
+        <div class="project">
+            <a href="projects/project-01.html">
+                <img src="assets/project1.jpg">
             </a>
+            <div class="column-set">
+                <div class="col-right">Project Name</div>
+                <div class="col-left">
+                    Hamish Fulton, <i>Nepal</i><br>
+                    Exhibition Catalog<br>
+                    1977<br><br>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta ex a porta blandit.<br><br>
+                    [<u><a href="projects/project-01.html">View..</a></u>]
+                </div>
+            </div>
         </div>
 
-        <div class="project-entry">
-            <a href="projects/sample-project.html">
-                <img src="assets/project2.jpg" alt="Project 2">
-                <p>Hamish Fulton, <i>Walking Passed</i><br>1992 [View..]</p>
-            </a>
+        <hr>
+
+        <div class="page-content" style="margin-top: 4rem; margin-bottom: 2rem;">
+            GROUP 2
         </div>
-    </div>
-
-    <div class="column right-side">
-        <header style="text-align: right;">
-            <a href="info.html">Information</a>
-        </header>
-        <div style="margin-top: 5rem;">
-            <h1>Select a project on the left to view details.</h1>
-            <br>
-            <p>This is your landing area. When a user clicks a project, the content will load here (or navigate to the detail page).</p>
+        
         </div>
-    </div>
-
-</div>
-
 </body>
 </html>
