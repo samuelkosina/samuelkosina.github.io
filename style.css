@@ -130,3 +130,35 @@ header.header a:nth-child(3) { justify-self: end; }
     display: block;    /* Zajistí, že pod fotkou nebude mezera */
     margin-bottom: 1rem; /* Mezera mezi fotkou a tvým mailem */
 }
+/* Styl pro řádek dovednosti */
+.skill-row {
+    display: flex;
+    justify-content: space-between; /* Název vlevo, úroveň vpravo */
+    align-items: baseline;
+    margin-bottom: 0.3rem; /* Jemná mezera mezi řádky */
+
+}
+
+.skill-row span {
+    flex: 1; /* Název zabere maximum místa */
+}
+
+.skill-row em {
+    text-align: right;
+    margin-left: 1rem;
+    min-width: 100px; /* Zajistí, že úrovně budou pod sebou */
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Na mobilu to raději necháme pod sebou, aby to nebylo moc zmáčknuté */
+@media (max-width: 480px) {
+    .skill-row {
+        flex-direction: column;
+        border-bottom: none;
+    }
+    .skill-row em {
+        margin-left: 0;
+        text-align: left;
+    }
+}
