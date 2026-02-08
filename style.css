@@ -156,3 +156,51 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
 .project-link:hover {
     color: rgba(0,0,0,0.5); /* Jemné ztmavení při najetí */
 }
+/* Styl pro Lightbox pozadí */
+.lightbox {
+    display: none; /* Schované jako výchozí */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9); /* Tmavé okolí */
+    justify-content: center;
+    align-items: center;
+    cursor: zoom-out;
+}
+
+/* Styl pro samotný obrázek v Lightboxu */
+.lightbox-content {
+    max-width: 90%;
+    max-height: 85%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    animation: zoom 0.3s ease; /* Jemná animace při otevření */
+}
+
+@keyframes zoom {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Tlačítko pro zavření */
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Změna kurzoru nad obrázky v projektu, aby uživatel věděl, že na ně může kliknout */
+.col-6 img {
+    cursor: zoom-in;
+    transition: opacity 0.3s;
+}
+
+.col-6 img:hover {
+    opacity: 0.9;
+}
