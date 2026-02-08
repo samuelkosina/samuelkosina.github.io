@@ -3,33 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Information</title>
+    <title>Information | CV</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="page-layout">
-        <header class="nav-header column-set">
-            <div style="flex: 2;">CV</div>
-            <div style="flex: 1; text-align: right;"><a href="index.html">✕</a></div>
+    <div class="container">
+        <header class="row">
+            <div class="col-6">CV</div>
+            <div class="col-6 col-right"><a href="index.html">✕</a></div>
         </header>
 
-        <div class="column-set">
-            <div class="col-right">Profile</div>
-            <div class="col-left">
-                Cargo Demo Template<br>
+        <div class="section-header"></div>
+
+        <div class="row">
+            <div class="col-6">
+                Profile (Sample)<br>
                 <a href="mailto:hello@example.com">hello@example.com</a><br>
-                Cras ut dictum mi. Sed quis lorem semper...
+                <a href="#">Instagram</a>
+            </div>
+            <div class="col-6">
+                <p>Cras ut dictum mi. Sed quis lorem semper, elementum mauris vitae, consectetur orci. Cras volutpat eget elit porta facilisis.</p>
             </div>
         </div>
 
         <hr>
 
-        <div class="column-set">
-            <div class="col-right">Education</div>
-            <div class="col-left">Vestibulum Euismod Ultrices<br>2023</div>
+        <div class="row">
+            <div class="col-6">Education</div>
+            <div class="col-6">
+                Vestibulum Euismod Ultrices<br>
+                2023
+            </div>
         </div>
 
-        <p style="color: rgba(0,0,0,0.25); margin-top: 5rem;">Last Updated 24.10.31</p>
+        <p class="caption" style="margin-top: 5rem;">Last Updated 24.10.31</p>
     </div>
 </body>
 </html>
