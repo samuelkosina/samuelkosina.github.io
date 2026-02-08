@@ -1,27 +1,36 @@
-/* --- ZÁKLADNÍ RESET --- */
+/* --- ZÁKLADNÍ RESET A GLOBÁLNÍ STYLY --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Standardní nastavení pro info.html a další podstránky */
 body {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #ffffff;
     color: #000000;
     line-height: 1.5;
-    padding-bottom: 5rem;
+    overflow-y: auto; /* Povolí normální scroll */
 }
 
+/* --- SPECIÁLNÍ NASTAVENÍ PRO INDEX (Split View) --- */
+body.index-page {
+    height: 100vh;
+    overflow: hidden; /* Zamkne scroll jen na hlavní straně */
+}
+
+body.index-page .main-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* --- SPOLEČNÉ PRVKY --- */
 a { text-decoration: none; color: inherit; }
 a:hover { color: rgba(0,0,0,0.4); }
 
-img {
-    width: 100%;
-    height: auto;
-    display: block;
-    margin-bottom: 1.5rem;
-}
+img { width: 100%; height: auto; display: block; margin-bottom: 1rem; }
 
 hr {
     border: 0;
@@ -29,136 +38,101 @@ hr {
     margin: 2.5rem 0;
 }
 
-/* --- POMOCNÉ TŘÍDY (Utility) --- */
-.caption {
-    font-size: 0.9rem;
-    color: #555; /* Trochu šedší pro odlišení */
-    margin-top: 0.5rem;
-    display: block;
-}
-
-.mt-4 {
-    margin-top: 1.5rem; /* Aby fungovala mezera v hlavičce */
-}
-
-/* --- HLAVNÍ KONTEJNER --- */
 .container {
-    padding: 0 0.75rem; /* Jednotná mezera zleva/zprava */
-    width: 100%;
+    padding: 0 1rem;
     max-width: 100%;
 }
 
 /* --- NAVIGACE --- */
 .nav-spacer { height: 2rem; }
-
-header.header {
-    width: 100%;
+header.header, .header-content {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 0;
+    width: 100%;
 }
-header.header a:nth-child(1) { justify-self: start; }
-header.header a:nth-child(2) { justify-self: center; }
-header.header a:nth-child(3) { justify-self: end; }
+header.header a:nth-child(1), .header-content a:nth-child(1) { justify-self: start; }
+header.header a:nth-child(2), .header-content a:nth-child(2) { justify-self: center; }
+header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end; }
 
 .header-line {
-    grid-column: 1 / -1;
-    width: 100%;
-    margin-top: 0.5rem;
     border: 0;
     border-top: 0.1rem solid #000;
+    margin-top: 0.5rem;
+    grid-column: 1 / -1;
 }
 
-/* --- GRID SYSTÉM (Řádky a Sloupce) --- */
+/* --- GRID SYSTÉM (Funguje pro Info i Projekty) --- */
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 1rem;
-    width: 100%; /* Jistota, aby se roztáhl */
+    width: 100%;
 }
 
-/* Univerzální sloupec 50% */
 .col-6 {
     flex: 0 0 50%;
     max-width: 50%;
     padding-right: 1rem;
 }
 
-/* Pokud chceš text v detailu zarovnat doprava (volitelné) */
-.col-right {
-    text-align: right; 
-    /* Pokud to v HTML používáš jen pro rozložení, můžeš tohle smazat */
-}
-
-/* --- PROJEKTY (INDEX) --- */
-.projects-grid {
+/* --- DUAL SCROLL (Jen na Indexu) --- */
+.dual-scroll-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 3rem 1.5rem;
-    padding: 0;
+    flex: 1;
+    overflow: hidden;
+    width: 100%;
 }
 
-.project-item {
-    flex: 0 0 calc(50% - 0.75rem);
-    margin-bottom: 2rem;
+.scroll-column {
+    flex: 0 0 50%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 2rem 1rem 10rem 1rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.scroll-column::-webkit-scrollbar { display: none; }
+
+.project-item { margin-bottom: 5rem; }
+
+/* --- INFO STRÁNKA (Skill Rows) --- */
+.skill-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.3rem;
+}
+.skill-row span { flex: 1; }
+.skill-row em { font-size: 0.9rem; color: #666; text-align: right; margin-left: 1rem; }
+
+.profile-photo {
+    width: 180px;
+    margin-bottom: 1rem;
 }
 
-/* --- MOBILNÍ ZOBRAZENÍ --- */
+/* --- MOBILNÍ VERZE --- */
 @media (max-width: 768px) {
-    /* Sloupce pod sebe */
+    body.index-page {
+        overflow: auto;
+        height: auto;
+    }
+    
+    .dual-scroll-container { flex-direction: column; }
+    
+    .scroll-column {
+        flex: 0 0 100%;
+        height: auto;
+        padding-bottom: 2rem;
+    }
+
     .col-6 {
         flex: 0 0 100%;
         max-width: 100%;
-        margin-bottom: 1.5rem;
         padding-right: 0;
+        margin-bottom: 1.5rem;
     }
 
-    /* Projekty pod sebe */
-    .project-item {
-        flex: 0 0 100%;
-    }
-
-    /* Skrytí prázdného sloupce v detailu projektu */
-    .mobile-hide {
-        display: none;
-    }
-}
-.profile-photo {
-    width: 180px;      /* Uprav si velikost podle potřeby */
-    height: auto;      /* Zachová poměr stran */
-    display: block;    /* Zajistí, že pod fotkou nebude mezera */
-    margin-bottom: 1rem; /* Mezera mezi fotkou a tvým mailem */
-}
-/* Styl pro řádek dovednosti */
-.skill-row {
-    display: flex;
-    justify-content: space-between; /* Název vlevo, úroveň vpravo */
-    align-items: baseline;
-    margin-bottom: 0.3rem; /* Jemná mezera mezi řádky */
-
-}
-
-.skill-row span {
-    flex: 1; /* Název zabere maximum místa */
-}
-
-.skill-row em {
-    text-align: right;
-    margin-left: 1rem;
-    min-width: 100px; /* Zajistí, že úrovně budou pod sebou */
-    font-size: 0.9rem;
-    color: #666;
-}
-
-/* Na mobilu to raději necháme pod sebou, aby to nebylo moc zmáčknuté */
-@media (max-width: 480px) {
-    .skill-row {
-        flex-direction: column;
-        border-bottom: none;
-    }
-    .skill-row em {
-        margin-left: 0;
-        text-align: left;
-    }
+    .skill-row { flex-direction: column; }
+    .skill-row em { margin-left: 0; text-align: left; }
 }
