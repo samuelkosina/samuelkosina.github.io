@@ -173,10 +173,14 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
 
 /* Styl pro samotný obrázek v Lightboxu */
 .lightbox-content {
-    max-width: 90%;
-    max-height: 85%;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    animation: zoom 0.3s ease; /* Jemná animace při otevření */
+    max-width: 90vw;    /* Maximálně 90 % šířky okna */
+    max-height: 85vh;   /* Maximálně 85 % výšky okna */
+    width: auto;        /* Automatická šířka podle poměru stran */
+    height: auto;       /* Automatická výška podle poměru stran */
+    object-fit: contain; /* Zajistí, že se obrázek vejde bez ořezu a deformace */
+    
+    /* Zabrání zvětšení nad originální rozlišení (volitelné) */
+    /* display: block; */
 }
 
 @keyframes zoom {
@@ -203,4 +207,8 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
 
 .col-6 img:hover {
     opacity: 0.9;
+}
+.lightbox-content {
+    /* ... předchozí kód ... */
+    image-rendering: -webkit-optimize-contrast; /* Pro maximální ostrost v prohlížečích */
 }
