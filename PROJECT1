@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="nav-spacer"></div> 
+
+        <header class="row">
+            <div class="col-6"><a href="../index.html">← Close Project</a></div>
+            <div class="col-6 col-right" style="text-align: left;"> Home, not a Home<br>
+                <span class="caption">001 | 2024</span>
+            </div>
+        </header>
+
+       <div class="row">
+    <div class="col-6">
+        <img src="images/DUCHODCe1.jpg" alt="Work">
+       
+          <img src="images/DUCHODCE2.jpg" alt="Work">
+      
+              <img src="images/DUCHODCE3.jpg" alt="Work">
+
+              <img src="images/DUCHODCE4.jpg" alt="Work">
+      
+              <img src="images/DUCHODCE5.jpg" alt="Work">
+      
+              <img src="images/DUCHODCE6.jpg" alt="Work">
+     
+              <img src="images/DUCHODCE7.jpg" alt="Work">
+      
+              <img src="images/DUCHODCE8.jpg" alt="Work">
+        <p class="caption">Home, not a Home<br> 2024</p>
+    </div>
+
+    <div class="col-6">
+        <br>
+        <p>
+            The concentration of parts of the population, especially seniors and people with disabilities, in facilities such as nursing homes or institutions is not always a natural solution—particularly in cases where the situation does not require it.
+        </p>
+
+        <p>
+            Paradoxically, a stay in an institution can itself become a new limitation that complicates a full and meaningful life.
+        </p>
+
+        <p>
+            Instead of isolation, we should strive to integrate these groups through community-based care, outpatient services, and community housing.
+        </p>
+
+        <p>
+            Institutions often aim to imitate the necessary reality of a home, school, or workplace.
+        </p>
+
+        <p>
+            But can such an environment truly be replicated?
+        </p> 
+        <br>
+        <p>
+            I approach this topic through a series of photographs that reveal the gap between institutional space and everyday life. The images focus on spaces that attempt to imitate familiar environments, yet expose how difficult it is to replace a sense of home, autonomy, and belonging.
+        </p>      
+        <br>
+        <br>
+        <em>
+            Based on this work, I developed an architectural project that translates the critical observations from the photographic series into spatial strategies offering alternatives to institutional care.
+        </em>    
+        <br> 
+        <a href="sample-project.html" class="project-link">PROJECT 1</a>
+    </div>
+</div>
+        </div>
+    </div>
+   <div id="lightbox" class="lightbox">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <span class="next" onclick="changeImage(1)">&#10095;</span>
+</div>
+
+<script>
+    let currentImageIndex = 0;
+    const images = Array.from(document.querySelectorAll('.col-6 img'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    // Otevření lightboxu na konkrétním obrázku
+    images.forEach((img, index) => {
+        img.onclick = () => {
+            currentImageIndex = index;
+            openLightbox();
+        };
+    });
+
+    function openLightbox() {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = images[currentImageIndex].src;
+    }
+
+    function closeLightbox() {
+        lightbox.style.display = 'none';
+    }
+
+    function changeImage(step) {
+        currentImageIndex += step;
+        // Loop: pokud jsme na konci, jdi na začátek a naopak
+        if (currentImageIndex >= images.length) currentImageIndex = 0;
+        if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+        
+        lightboxImg.src = images[currentImageIndex].src;
+    }
+
+    // Zavření kliknutím mimo obrázek
+    lightbox.onclick = (e) => {
+        if (e.target === lightbox) closeLightbox();
+    };
+
+    // Podpora klávesnice (šipky a Esc)
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display === 'flex') {
+            if (e.key === "ArrowLeft") changeImage(-1);
+            if (e.key === "ArrowRight") changeImage(1);
+            if (e.key === "Escape") closeLightbox();
+        }
+    });
+</script>
+</body>
+</html>
+        </div>
+    </div>
+</body>
+</html>
