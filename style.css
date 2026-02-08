@@ -92,4 +92,27 @@ header.header a:nth-child(3) {
 @media (max-width: 768px) {
     .column-set { flex-direction: column; gap: 0.5rem; }
 }
+/* --- TOTO VLOŽ NA ÚPLNÝ KONEC SOUBORU --- */
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 1rem; /* Mezera nad řádkem, jak je v HTML */
+}
+
+.col-6 {
+    flex: 0 0 50%;     /* Šířka 50% pro desktop */
+    max-width: 50%;
+    padding-right: 1rem; /* Malá mezera mezi sloupci */
+}
+
+/* Mobilní zobrazení pro tyto nové sloupce */
+@media (max-width: 768px) {
+    .col-6 {
+        flex: 0 0 100%;  /* Na mobilu roztáhnout na celou šířku */
+        max-width: 100%;
+        margin-bottom: 1.5rem; /* Mezera mezi bloky pod sebou */
+        padding-right: 0;
+    }
+}
 
