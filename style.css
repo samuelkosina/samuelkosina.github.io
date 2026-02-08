@@ -1,95 +1,72 @@
+/* General Reset */
 * {
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  background: #fff;
-  color: #111;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+    line-height: 1.5;
 }
 
-.site-header {
-  padding: 64px 24px;
-  max-width: 1200px;
+/* Layout Containers */
+.container {
+    padding: 0 0.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.site-header h1 {
-  font-size: 1.6rem;
-  font-weight: 400;
-  margin-bottom: 8px;
+/* Header & Borders */
+header {
+    border-top: 0.1rem solid #000;
+    padding-top: 0.5rem;
+    margin-top: 0;
 }
 
-.site-header p {
-  font-size: 0.95rem;
-  color: #666;
+.section-header {
+    border-bottom: 0.1rem solid #000;
+    padding-bottom: 0.4rem;
+    margin-bottom: 1.5rem;
 }
 
-.project-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 32px;
-  padding: 24px;
-  max-width: 1200px;
+/* The Column System (replacing <column-set>) */
+.row {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 2rem;
 }
 
-.project-card {
-  text-decoration: none;
-  color: inherit;
+.col-left { flex: 2; }
+.col-right { flex: 1; text-align: right; }
+.col-50 { flex: 1; }
+
+/* Responsive Grid */
+@media (max-width: 768px) {
+    .row { flex-direction: column; }
+    .col-right { text-align: left; }
 }
 
-.project-card img {
-  width: 100%;
-  display: block;
-  margin-bottom: 12px;
+/* Navigation & Links */
+nav a {
+    text-decoration: none;
+    color: black;
+    margin-right: 1rem;
 }
 
-.project-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.85rem;
+nav a:hover { color: rgba(0,0,0,0.4); }
+
+hr {
+    border: 0;
+    border-top: 0.1rem solid #000;
+    margin: 2rem 0;
 }
 
-.project-meta .tag {
-  color: #777;
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 1rem;
 }
-
-.project-card:hover img {
-  opacity: 0.85;
-}
-.project-nav {
-  padding: 24px;
-  max-width: 900px;
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.9rem;
-}
-
-.project-nav a {
-  text-decoration: none;
-  color: #666;
-}
-
-.project-content {
-  padding: 24px;
-  max-width: 900px;
-}
-
-.project-content h1 {
-  font-size: 1.5rem;
-  font-weight: 400;
-  margin-bottom: 8px;
-}
-
-.project-info {
-  color: #777;
-  font-size: 0.85rem;
-  margin-bottom: 32px;
-}
-
-.project-content img {
-  width: 100%;
-  margin-bottom: 24px;
-}
-
-
