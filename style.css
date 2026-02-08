@@ -1,78 +1,72 @@
-/* General Reset */
+/* 1. General Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+body, html {
+    height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     background-color: #ffffff;
-    color: #000000;
-    line-height: 1.5;
-    padding-bottom: 5rem;
+    color: #000;
+    overflow: hidden; /* This stops the main page from scrolling so only columns scroll */
 }
 
-.container {
-    max-width: 100%;
-    padding: 0 0.5rem;
+/* 2. Split Layout System */
+.split-container {
+    display: flex;
+    height: 100vh;
 }
 
-/* Borders & Dividers */
+.column {
+    flex: 1;
+    height: 100vh;
+    overflow-y: scroll; /* Allows individual scrolling */
+    padding: 1rem;
+    /* Hide Scrollbars */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.column::-webkit-scrollbar {
+    display: none;
+}
+
+.left-side {
+    border-right: 0.1rem solid #000;
+}
+
+/* 3. Elements */
 header {
     border-top: 0.1rem solid #000;
     padding-top: 0.5rem;
-    margin-bottom: 0;
-}
-
-.section-header {
-    border-bottom: 0.1rem solid #000;
-    padding-bottom: 0.4rem;
-    margin-bottom: 1.5rem;
-}
-
-hr {
-    border: 0;
-    border-top: 0.1rem solid #000;
-    margin: 2rem 0;
-}
-
-/* Grid System */
-.row {
-    display: flex;
-    gap: 0.6rem;
-    margin-bottom: 1rem;
-}
-
-.col-6 { flex: 2; }
-.col-3 { flex: 1; }
-.col-right { text-align: right; }
-
-/* Responsive */
-@media (max-width: 768px) {
-    .row { flex-direction: column; gap: 0.5rem; }
-    .col-right { text-align: left; }
-    .mobile-hide { display: none; }
-}
-
-/* Typography & Links */
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-a:hover {
-    color: rgba(0,0,0,0.4);
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    background: #fff;
+    z-index: 10;
 }
 
 img {
     width: 100%;
     height: auto;
     display: block;
+    margin-bottom: 1rem;
 }
 
-.caption {
-    color: rgba(0, 0, 0, 0.4);
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
+a { text-decoration: none; color: inherit; }
+a:hover { color: rgba(0,0,0,0.4); }
+
+.project-link {
+    margin-bottom: 4rem;
+    display: block;
+}
+
+/* 4. Responsive (Mobile) */
+@media (max-width: 768px) {
+    body, html { overflow: auto; }
+    .split-container { display: block; height: auto; }
+    .column { height: auto; overflow: visible; border-right: none; }
+    .left-side { border-bottom: 0.1rem solid #000; }
 }
