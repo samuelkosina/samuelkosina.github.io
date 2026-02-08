@@ -3,43 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Portfolio | Index</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="page-layout">
-        <header class="nav-header column-set">
-            <div style="flex: 2;"><a href="index.html">Cargo Demo Template</a></div>
-            <div style="flex: 1;"><a href="index.html">Index</a></div>
-            <div style="flex: 1; text-align: right;"><a href="info.html">Information</a></div>
+    <div class="container">
+        <header class="row">
+            <div class="col-6"><a href="index.html">Cargo Demo Template</a></div>
+            <div class="col-3"><a href="index.html">Projects</a></div>
+            <div class="col-3 col-right"><a href="info.html">Information</a></div>
         </header>
-
-        <div class="page-content" style="margin-bottom: 2rem;">
-            GROUP 1
-        </div>
-
-        <div class="project">
-            <a href="projects/project-01.html">
-                <img src="assets/project1.jpg">
-            </a>
-            <div class="column-set">
-                <div class="col-right">Project Name</div>
-                <div class="col-left">
-                    Hamish Fulton, <i>Nepal</i><br>
-                    Exhibition Catalog<br>
-                    1977<br><br>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. In porta ex a porta blandit.<br><br>
-                    [<u><a href="projects/project-01.html">View..</a></u>]
-                </div>
-            </div>
-        </div>
 
         <hr>
 
-        <div class="page-content" style="margin-top: 4rem; margin-bottom: 2rem;">
-            GROUP 2
-        </div>
-        
-        </div>
+        <section>
+            <a href="projects/sample-project.html">
+                <img src="assets/project1.jpg" alt="Project Name">
+            </a>
+            <div class="row" style="margin-top: 1rem;">
+                <div class="col-6">Project Name</div>
+                <div class="col-6">
+                    <strong>Hamish Fulton, <i>Nepal</i></strong><br>
+                    Exhibition Catalog, 1977<br><br>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p><br>
+                    <a href="projects/sample-project.html"><u>View..</u></a>
+                </div>
+            </div>
+        </section>
+
+        <hr>
+    </div>
 </body>
 </html>
