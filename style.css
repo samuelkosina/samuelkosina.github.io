@@ -1,4 +1,4 @@
-/* General Reset */
+/* --- ZÁKLADNÍ RESET --- */
 * {
     margin: 0;
     padding: 0;
@@ -13,42 +13,8 @@ body {
     padding-bottom: 5rem;
 }
 
-/* The exact look from your snippets */
-.page-content {
-    border-style: solid;
-    border-bottom-width: 0.1rem; /* Group header border */
-    border-top-width: 0rem;
-    padding-bottom: 0.4rem;
-    background-color: #ffffff;
-}
-
-/* Header style with top border */
-.nav-header {
-    border-top: 0.1rem solid #000;
-    padding-top: 0.5rem;
-    margin-bottom: 2rem;
-}
-
-.page-layout {
-    padding-right: 0.5rem;
-    padding-left: 0.5rem;
-}
-
-/* Grid System - standard HTML version of <column-set> */
-.column-set {
-    display: flex;
-    gap: 0.6rem;
-    margin-bottom: 1.5rem;
-}
-
-.col-left { flex: 2; }
-.col-right { flex: 1; }
-
-hr {
-    border: 0;
-    border-top: 0.1rem solid #000;
-    margin: 2.5rem 0;
-}
+a { text-decoration: none; color: inherit; }
+a:hover { color: rgba(0,0,0,0.4); }
 
 img {
     width: 100%;
@@ -57,96 +23,104 @@ img {
     margin-bottom: 1.5rem;
 }
 
-a { text-decoration: none; color: inherit; }
-a:hover { color: rgba(0,0,0,0.4); }
-
-/* Space above navigation */
-.nav-spacer {
-    height: 2rem;
+hr {
+    border: 0;
+    border-top: 0.1rem solid #000;
+    margin: 2.5rem 0;
 }
 
-/* Navigation layout */
+/* --- POMOCNÉ TŘÍDY (Utility) --- */
+.caption {
+    font-size: 0.9rem;
+    color: #555; /* Trochu šedší pro odlišení */
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.mt-4 {
+    margin-top: 1.5rem; /* Aby fungovala mezera v hlavičce */
+}
+
+/* --- HLAVNÍ KONTEJNER --- */
+.container {
+    padding: 0 0.75rem; /* Jednotná mezera zleva/zprava */
+    width: 100%;
+    max-width: 100%;
+}
+
+/* --- NAVIGACE --- */
+.nav-spacer { height: 2rem; }
+
 header.header {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    padding: 0 0.75rem; /* space on left & right */
+    padding: 0;
+}
+header.header a:nth-child(1) { justify-self: start; }
+header.header a:nth-child(2) { justify-self: center; }
+header.header a:nth-child(3) { justify-self: end; }
+
+.header-line {
+    grid-column: 1 / -1;
+    width: 100%;
+    margin-top: 0.5rem;
+    border: 0;
+    border-top: 0.1rem solid #000;
 }
 
-/* Align items */
-header.header a:nth-child(1) {
-    justify-self: start;
-}
-
-header.header a:nth-child(2) {
-    justify-self: center;
-}
-
-header.header a:nth-child(3) {
-    justify-self: end;
-}
-
-
-/* Mobile logic */
-@media (max-width: 768px) {
-    .column-set { flex-direction: column; gap: 0.5rem; }
-}
-/* --- TOTO VLOŽ NA ÚPLNÝ KONEC SOUBORU --- */
-
+/* --- GRID SYSTÉM (Řádky a Sloupce) --- */
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 1rem; /* Mezera nad řádkem, jak je v HTML */
+    margin-top: 1rem;
+    width: 100%; /* Jistota, aby se roztáhl */
 }
 
+/* Univerzální sloupec 50% */
 .col-6 {
-    flex: 0 0 50%;     /* Šířka 50% pro desktop */
+    flex: 0 0 50%;
     max-width: 50%;
-    padding-right: 1rem; /* Malá mezera mezi sloupci */
+    padding-right: 1rem;
 }
 
-/* Mobilní zobrazení pro tyto nové sloupce */
-@media (max-width: 768px) {
-    .col-6 {
-        flex: 0 0 100%;  /* Na mobilu roztáhnout na celou šířku */
-        max-width: 100%;
-        margin-bottom: 1.5rem; /* Mezera mezi bloky pod sebou */
-        padding-right: 0;
-    }
+/* Pokud chceš text v detailu zarovnat doprava (volitelné) */
+.col-right {
+    text-align: right; 
+    /* Pokud to v HTML používáš jen pro rozložení, můžeš tohle smazat */
 }
 
-/* Kontejner pro mřížku projektů */
+/* --- PROJEKTY (INDEX) --- */
 .projects-grid {
     display: flex;
-    flex-wrap: wrap;     /* Aby se další projekty hodily na nový řádek */
-    gap: 3rem 1.5rem;    /* První číslo je mezera pod sebou, druhé vedle sebe */
-    padding: 0 0.75rem;  /* Zarovnání s navigací */
+    flex-wrap: wrap;
+    gap: 3rem 1.5rem;
+    padding: 0;
 }
 
-/* Každý projekt zabere polovinu šířky (mínus kousek pro mezeru) */
 .project-item {
     flex: 0 0 calc(50% - 0.75rem);
     margin-bottom: 2rem;
 }
 
-/* Úprava pro mobily: na mobilu chceme zase jen jeden pod druhým */
+/* --- MOBILNÍ ZOBRAZENÍ --- */
 @media (max-width: 768px) {
+    /* Sloupce pod sebe */
+    .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+        padding-right: 0;
+    }
+
+    /* Projekty pod sebe */
     .project-item {
         flex: 0 0 100%;
     }
-    
-    /* Na mobilu v rámci projektu zrušíme 50/50 rozdělení textu, aby to nebylo moc úzké */
-    .project-item .col-6 {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-}
 
-.header-line {
-    grid-column: 1 / -1; /* Toto řekne čáře: "Zaber místo od prvního do posledního sloupce" */
-    width: 100%;
-    margin-top: 0.5rem;  /* Mezera mezi textem a čárou */
-    border: 0;
-    border-top: 0.1rem solid #000;
+    /* Skrytí prázdného sloupce v detailu projektu */
+    .mobile-hide {
+        display: none;
+    }
 }
