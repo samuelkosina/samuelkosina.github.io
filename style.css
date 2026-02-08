@@ -143,3 +143,10 @@ header.header a:nth-child(3) {
     }
 }
 
+.header-line {
+    grid-column: 1 / -1; /* Toto řekne čáře: "Zaber místo od prvního do posledního sloupce" */
+    width: 100%;
+    margin-top: 0.5rem;  /* Mezera mezi textem a čárou */
+    border: 0;
+    border-top: 0.1rem solid #000;
+}
