@@ -74,17 +74,56 @@
 </div>
         </div>
     </div>
-    <div id="lightbox" class="lightbox" onclick="this.style.display='none'">
-    <span class="close-lightbox">&times;</span>
+   <div id="lightbox" class="lightbox">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <span class="prev" onclick="changeImage(-1)">&#10094;</span>
     <img class="lightbox-content" id="lightbox-img">
+    <span class="next" onclick="changeImage(1)">&#10095;</span>
 </div>
 
 <script>
-    // Funkce, která najde všechny obrázky a přidá jim možnost kliknutí
-    document.querySelectorAll('.col-6 img').forEach(image => {
-        image.onclick = () => {
-            document.getElementById('lightbox').style.display = 'flex';
-            document.getElementById('lightbox-img').src = image.src;
+    let currentImageIndex = 0;
+    const images = Array.from(document.querySelectorAll('.col-6 img'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    // Otevření lightboxu na konkrétním obrázku
+    images.forEach((img, index) => {
+        img.onclick = () => {
+            currentImageIndex = index;
+            openLightbox();
+        };
+    });
+
+    function openLightbox() {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = images[currentImageIndex].src;
+    }
+
+    function closeLightbox() {
+        lightbox.style.display = 'none';
+    }
+
+    function changeImage(step) {
+        currentImageIndex += step;
+        // Loop: pokud jsme na konci, jdi na začátek a naopak
+        if (currentImageIndex >= images.length) currentImageIndex = 0;
+        if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+        
+        lightboxImg.src = images[currentImageIndex].src;
+    }
+
+    // Zavření kliknutím mimo obrázek
+    lightbox.onclick = (e) => {
+        if (e.target === lightbox) closeLightbox();
+    };
+
+    // Podpora klávesnice (šipky a Esc)
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display === 'flex') {
+            if (e.key === "ArrowLeft") changeImage(-1);
+            if (e.key === "ArrowRight") changeImage(1);
+            if (e.key === "Escape") closeLightbox();
         }
     });
 </script>
