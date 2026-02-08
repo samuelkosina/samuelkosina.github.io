@@ -116,3 +116,30 @@ header.header a:nth-child(3) {
     }
 }
 
+/* Kontejner pro mřížku projektů */
+.projects-grid {
+    display: flex;
+    flex-wrap: wrap;     /* Aby se další projekty hodily na nový řádek */
+    gap: 3rem 1.5rem;    /* První číslo je mezera pod sebou, druhé vedle sebe */
+    padding: 0 0.75rem;  /* Zarovnání s navigací */
+}
+
+/* Každý projekt zabere polovinu šířky (mínus kousek pro mezeru) */
+.project-item {
+    flex: 0 0 calc(50% - 0.75rem);
+    margin-bottom: 2rem;
+}
+
+/* Úprava pro mobily: na mobilu chceme zase jen jeden pod druhým */
+@media (max-width: 768px) {
+    .project-item {
+        flex: 0 0 100%;
+    }
+    
+    /* Na mobilu v rámci projektu zrušíme 50/50 rozdělení textu, aby to nebylo moc úzké */
+    .project-item .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
