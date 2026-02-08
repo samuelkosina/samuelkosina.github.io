@@ -144,3 +144,15 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     .skill-row { flex-direction: column; }
     .skill-row em { margin-left: 0; text-align: left; }
 }
+/* Styl pro specifický odkaz na projekt */
+.project-link {
+    text-decoration: underline;
+    text-transform: uppercase; /* Vynutí velká písmena */
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+.project-link:hover {
+    color: rgba(0,0,0,0.5); /* Jemné ztmavení při najetí */
+}
