@@ -17,7 +17,7 @@ body {
 /* --- SPECIÁLNÍ NASTAVENÍ PRO INDEX (Split View) --- */
 body.index-page {
     height: 100vh;
-    overflow: hidden; /* Zamkne scroll jen na hlavní straně */
+    overflow: hidden; /* Zamkne scroll celé stránky, scrollují jen sloupce */
 }
 
 body.index-page .main-layout {
@@ -52,7 +52,6 @@ header.header, .header-content {
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     width: 100%;
-    /* Přidáme stejný padding jako mají sloupce dole */
     padding: 0 1rem; 
 }
 
@@ -65,7 +64,6 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     border-top: 0.1rem solid #000;
     margin-top: 0.5rem;
     grid-column: 1 / -1;
-    /* Zajistí, že linka půjde od kraje ke kraji i přes padding */
     margin-left: -1rem;
     margin-right: -1rem;
 }
@@ -83,7 +81,7 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     padding-right: 1rem;
 }
 
-/* --- DUAL SCROLL (Jen na Indexu) --- */
+/* --- DUAL SCROLL (Hlavní logika pro Index) --- */
 .dual-scroll-container {
     display: flex;
     flex: 1;
@@ -92,15 +90,21 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
 }
 
 .scroll-column {
-    flex: 0 0 50%;
+    flex: 0 0 50%; /* Každý sloupec má přesně 50% */
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 2rem 1rem 10rem 1rem;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: none; /* Firefox - schová posuvník */
+    -ms-overflow-style: none; /* IE/Edge - schová posuvník */
 }
-.scroll-column::-webkit-scrollbar { display: none; }
+
+/* NOVÉ: Dělící čára u levého sloupce */
+.scroll-column:first-child {
+    border-right: 1px solid #000;
+}
+
+.scroll-column::-webkit-scrollbar { display: none; } /* Chrome/Safari - schová posuvník */
 
 .project-item { margin-bottom: 5rem; }
 
@@ -119,68 +123,43 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     margin-bottom: 1rem;
 }
 
-/* --- MOBILNÍ VERZE --- */
-@media (max-width: 768px) {
-    body.index-page {
-        overflow: auto;
-        height: auto;
-    }
-    
-    .dual-scroll-container { flex-direction: column; }
-    
-    .scroll-column {
-        flex: 0 0 100%;
-        height: auto;
-        padding-bottom: 2rem;
-    }
-
-    .col-6 {
-        flex: 0 0 100%;
-        max-width: 100%;
-        padding-right: 0;
-        margin-bottom: 1.5rem;
-    }
-
-    .skill-row { flex-direction: column; }
-    .skill-row em { margin-left: 0; text-align: left; }
-}
-/* Styl pro specifický odkaz na projekt */
+/* --- SPECIFICKÉ ODKAZY NA PROJEKTY --- */
 .project-link {
     text-decoration: underline;
-    text-transform: uppercase; /* Vynutí velká písmena */
+    text-transform: uppercase;
     font-weight: bold;
     display: inline-block;
     margin-top: 0.5rem;
 }
 
 .project-link:hover {
-    color: rgba(0,0,0,0.5); /* Jemné ztmavení při najetí */
+    color: rgba(0,0,0,0.5);
 }
-/* Styl pro Lightbox pozadí */
+
+/* --- LIGHTBOX --- */
 .lightbox {
-    display: none; /* Schované jako výchozí */
+    display: none;
     position: fixed;
     z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Tmavé okolí */
+    background-color: rgba(0, 0, 0, 0.95);
     justify-content: center;
     align-items: center;
     cursor: zoom-out;
 }
 
-/* Styl pro samotný obrázek v Lightboxu */
 .lightbox-content {
-    max-width: 90vw;    /* Maximálně 90 % šířky okna */
-    max-height: 85vh;   /* Maximálně 85 % výšky okna */
-    width: auto;        /* Automatická šířka podle poměru stran */
-    height: auto;       /* Automatická výška podle poměru stran */
-    object-fit: contain; /* Zajistí, že se obrázek vejde bez ořezu a deformace */
-    
-    /* Zabrání zvětšení nad originální rozlišení (volitelné) */
-    /* display: block; */
+    max-width: 90vw;
+    max-height: 85vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    animation-name: zoom;
+    animation-duration: 0.3s;
 }
 
 @keyframes zoom {
@@ -188,7 +167,6 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     to { transform: scale(1); opacity: 1; }
 }
 
-/* Tlačítko pro zavření */
 .close-lightbox {
     position: absolute;
     top: 20px;
@@ -199,7 +177,6 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     cursor: pointer;
 }
 
-/* Změna kurzoru nad obrázky v projektu, aby uživatel věděl, že na ně může kliknout */
 .col-6 img {
     cursor: zoom-in;
     transition: opacity 0.3s;
@@ -208,11 +185,8 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
 .col-6 img:hover {
     opacity: 0.9;
 }
-.lightbox-content {
-    /* ... předchozí kód ... */
-    image-rendering: -webkit-optimize-contrast; /* Pro maximální ostrost v prohlížečích */
-}
-/* Šipky pro navigaci */
+
+/* Šipky pro navigaci v Lightboxu */
 .prev, .next {
     cursor: pointer;
     position: absolute;
@@ -235,16 +209,38 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Úprava Lightboxu pro flexibilitu */
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    justify-content: center;
-    align-items: center;
+/* --- MOBILNÍ VERZE (RESPONZIVITA) --- */
+@media (max-width: 768px) {
+    body.index-page {
+        overflow: auto;
+        height: auto;
+    }
+    
+    .dual-scroll-container { 
+        flex-direction: column; 
+    }
+    
+    .scroll-column {
+        flex: 0 0 100%;
+        height: auto;
+        padding-bottom: 2rem;
+    }
+
+    /* NOVÉ: Na mobilu zrušíme dělící čáru, aby nebyla u kraje */
+    .scroll-column:first-child {
+        border-right: none;
+        border-bottom: 1px solid #000; /* Volitelné: Přidá čáru MEZI sloupce, když jsou pod sebou */
+        padding-bottom: 3rem; /* Větší mezera u čáry */
+        margin-bottom: 2rem;
+    }
+
+    .col-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+        padding-right: 0;
+        margin-bottom: 1.5rem;
+    }
+
+    .skill-row { flex-direction: column; }
+    .skill-row em { margin-left: 0; text-align: left; }
 }
