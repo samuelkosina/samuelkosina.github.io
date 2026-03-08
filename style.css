@@ -186,28 +186,32 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     
 /* DEFINICE POŘADÍ NA MOBILU */
 
-    /* 1. Cars... (Levý sloupec, 1. projekt) */
-    .scroll-column:first-child .project-item:nth-child(1) { order: 1; } 
+/* 1. Cars... (Levý sloupec, 1. projekt) */
+.scroll-column:first-child .project-item:nth-child(1) { order: 1; } 
 
-    /* 2. Palimpsest (Pravý sloupec, 1. projekt) */
-    .scroll-column:last-child  .project-item:nth-child(1) { order: 2; } 
+/* 2. Palimpsest (Pravý sloupec, 1. projekt) */
+.scroll-column:last-child  .project-item:nth-child(1) { order: 2; } 
 
-    /* 3. Home, not a Home (Levý sloupec, 2. projekt) */
-    .scroll-column:first-child .project-item:nth-child(2) { order: 3; } 
+/* 3. Home, not a Home (Levý sloupec, 2. projekt) */
+.scroll-column:first-child .project-item:nth-child(2) { order: 3; } 
 
-    /* 4. Home, not an Institution (Levý sloupec, 3. projekt) - TEĎ BUDE ZDE */
-    .scroll-column:first-child .project-item:nth-child(3) { order: 4; } 
+/* 4. Urban Forensics (Pravý sloupec, 2. projekt) */
+.scroll-column:last-child  .project-item:nth-child(2) { order: 5; } 
 
-    /* 5. Urban Forensics (Pravý sloupec, 2. projekt) - POSUNUTO NÍŽE */
-    .scroll-column:last-child  .project-item:nth-child(2) { order: 5; } 
+/* 5. Home, not an Institution (Levý sloupec, 3. projekt) */
+.scroll-column:first-child .project-item:nth-child(3) { order: 4; } 
 
-    /* 6. Home Office (Pravý sloupec, 3. projekt) */
-    .scroll-column:last-child  .project-item:nth-child(3) { order: 6; }
+/* 6. Infame Radio (Pravý sloupec, 3. projekt) */
+.scroll-column:last-child  .project-item:nth-child(3) { order: 6; }
 
-    /* 7. Spontaneous Community (Pravý sloupec, 4. projekt) */
-.scroll-column:last-child .project-item:nth-child(4) { 
-    order: 7; 
-}
+/* 7. Scenic Design (Pravý sloupec, 4. projekt) */
+.scroll-column:last-child  .project-item:nth-child(4) { order: 7; }
+
+/* 8. Spontaneous Community (Pravý sloupec, 5. projekt) */
+.scroll-column:last-child  .project-item:nth-child(5) { order: 8; }
+
+/* 9. Home Office (Pravý sloupec, 6. projekt) */
+.scroll-column:last-child  .project-item:nth-child(6) { order: 9; }
     /* 2. OPRAVA DETAILU PROJEKTU (M-bloky) */
     /* Aktivuje se jen v souborech s <body class="project-detail-page"> */
     .project-detail-page .row {
