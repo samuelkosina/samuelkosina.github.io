@@ -5,19 +5,18 @@
     box-sizing: border-box;
 }
 
-/* Standardní nastavení pro info.html a další podstránky */
 body {
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     background-color: #ffffff;
     color: #000000;
     line-height: 1.5;
-    overflow-y: auto; /* Povolí normální scroll */
+    overflow-y: auto;
 }
 
 /* --- SPECIÁLNÍ NASTAVENÍ PRO INDEX (Split View) --- */
 body.index-page {
     height: 100vh;
-    overflow: hidden; /* Zamkne scroll celé stránky, scrollují jen sloupce */
+    overflow: hidden;
 }
 
 body.index-page .main-layout {
@@ -30,7 +29,14 @@ body.index-page .main-layout {
 a { text-decoration: none; color: inherit; }
 a:hover { color: rgba(0,0,0,0.4); }
 
-img { width: 100%; height: auto; display: block; margin-bottom: 1rem; }
+/* --- SPOLEČNÉ PRVKY --- */
+/* Přidali jsme 'video' k obrázkům, aby měly stejné chování i mezery */
+img, video { 
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    margin-bottom: 1rem; /* Tato hodnota určuje mezeru mezi nimi */
+}
 
 hr {
     border: 0;
@@ -43,10 +49,9 @@ hr {
     max-width: 100%;
 }
 
-/* --- NAVIGACE --- */
 .nav-spacer { height: 2rem; }
 
-/* Sjednocení pro obě verze hlavičky (index i info) */
+/* --- NAVIGACE --- */
 header.header, .header-content {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -68,7 +73,7 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     margin-right: -1rem;
 }
 
-/* --- GRID SYSTÉM (Funguje pro Info i Projekty) --- */
+/* --- GRID SYSTÉM (Desktop) --- */
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -81,7 +86,7 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     padding-right: 1rem;
 }
 
-/* --- DUAL SCROLL (Hlavní logika pro Index) --- */
+/* --- DUAL SCROLL (Index) --- */
 .dual-scroll-container {
     display: flex;
     flex: 1;
@@ -90,25 +95,24 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
 }
 
 .scroll-column {
-    flex: 0 0 50%; /* Každý sloupec má přesně 50% */
+    flex: 0 0 50%;
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 2rem 1rem 10rem 1rem;
-    scrollbar-width: none; /* Firefox - schová posuvník */
-    -ms-overflow-style: none; /* IE/Edge - schová posuvník */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
 }
 
-/* NOVÉ: Dělící čára u levého sloupce */
 .scroll-column:first-child {
     border-right: 1px solid #000;
 }
 
-.scroll-column::-webkit-scrollbar { display: none; } /* Chrome/Safari - schová posuvník */
+.scroll-column::-webkit-scrollbar { display: none; }
 
 .project-item { margin-bottom: 5rem; }
 
-/* --- INFO STRÁNKA (Skill Rows) --- */
+/* --- INFO STRÁNKA --- */
 .skill-row {
     display: flex;
     justify-content: space-between;
@@ -123,19 +127,6 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     margin-bottom: 1rem;
 }
 
-/* --- SPECIFICKÉ ODKAZY NA PROJEKTY --- */
-.project-link {
-    text-decoration: underline;
-    text-transform: uppercase;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 0.5rem;
-}
-
-.project-link:hover {
-    color: rgba(0,0,0,0.5);
-}
-
 /* --- LIGHTBOX --- */
 .lightbox {
     display: none;
@@ -148,18 +139,13 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     background-color: rgba(0, 0, 0, 0.95);
     justify-content: center;
     align-items: center;
-    cursor: zoom-out;
 }
 
 .lightbox-content {
     max-width: 90vw;
     max-height: 85vh;
-    width: auto;
-    height: auto;
     object-fit: contain;
-    image-rendering: -webkit-optimize-contrast;
-    animation-name: zoom;
-    animation-duration: 0.3s;
+    animation: zoom 0.3s;
 }
 
 @keyframes zoom {
@@ -173,74 +159,116 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
     right: 35px;
     color: #fff;
     font-size: 40px;
-    font-weight: bold;
     cursor: pointer;
 }
 
-.col-6 img {
-    cursor: zoom-in;
-    transition: opacity 0.3s;
-}
-
-.col-6 img:hover {
-    opacity: 0.9;
-}
-
-/* Šipky pro navigaci v Lightboxu */
 .prev, .next {
     cursor: pointer;
     position: absolute;
     top: 50%;
-    width: auto;
+    color: white;
+    font-size: 30px;
     padding: 16px;
     margin-top: -50px;
-    color: white;
-    font-weight: bold;
-    font-size: 30px;
-    transition: 0.3s ease;
-    user-select: none;
     z-index: 10001;
 }
-
 .prev { left: 20px; }
 .next { right: 20px; }
 
-.prev:hover, .next:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
 /* --- MOBILNÍ VERZE (RESPONZIVITA) --- */
 @media (max-width: 768px) {
-    body.index-page {
-        overflow: auto;
-        height: auto;
-    }
     
-    .dual-scroll-container { 
-        flex-direction: column; 
-    }
+    /* 1. OPRAVA INDEXU */
+    body.index-page { overflow-y: auto !important; height: auto !important; }
+    body.index-page .main-layout { height: auto; }
+    .dual-scroll-container { display: grid; grid-template-columns: 1fr; height: auto; overflow: visible; }
+    .scroll-column { display: contents; }
     
-    .scroll-column {
-        flex: 0 0 100%;
-        height: auto;
-        padding-bottom: 2rem;
+/* DEFINICE POŘADÍ NA MOBILU */
+
+    /* 1. Cars... (Levý sloupec, 1. projekt) */
+    .scroll-column:first-child .project-item:nth-child(1) { order: 1; } 
+
+    /* 2. Palimpsest (Pravý sloupec, 1. projekt) */
+    .scroll-column:last-child  .project-item:nth-child(1) { order: 2; } 
+
+    /* 3. Home, not a Home (Levý sloupec, 2. projekt) */
+    .scroll-column:first-child .project-item:nth-child(2) { order: 3; } 
+
+    /* 4. Home, not an Institution (Levý sloupec, 3. projekt) - TEĎ BUDE ZDE */
+    .scroll-column:first-child .project-item:nth-child(3) { order: 4; } 
+
+    /* 5. Urban Forensics (Pravý sloupec, 2. projekt) - POSUNUTO NÍŽE */
+    .scroll-column:last-child  .project-item:nth-child(2) { order: 5; } 
+
+    /* 6. Home Office (Pravý sloupec, 3. projekt) */
+    .scroll-column:last-child  .project-item:nth-child(3) { order: 6; }
+
+    /* 7. Spontaneous Community (Pravý sloupec, 4. projekt) */
+.scroll-column:last-child .project-item:nth-child(4) { 
+    order: 7; 
+}
+    /* 2. OPRAVA DETAILU PROJEKTU (M-bloky) */
+    /* Aktivuje se jen v souborech s <body class="project-detail-page"> */
+    .project-detail-page .row {
+        display: flex !important;
+        flex-direction: column !important;
     }
 
-    /* NOVÉ: Na mobilu zrušíme dělící čáru, aby nebyla u kraje */
-    .scroll-column:first-child {
-        border-right: none;
-        border-bottom: 1px solid #000; /* Volitelné: Přidá čáru MEZI sloupce, když jsou pod sebou */
-        padding-bottom: 3rem; /* Větší mezera u čáry */
-        margin-bottom: 2rem;
+    .project-detail-page .col-6 {
+        display: contents !important; 
     }
 
+    /* Definice pořadí na mobilu */
+    .project-detail-page .m1 { order: 1; }
+    .project-detail-page .m2 { order: 2; }
+    .project-detail-page .m3 { order: 3; }
+    .project-detail-page .m4 { order: 4; }
+    .project-detail-page .m5 { order: 5; }
+    .project-detail-page .m6 { order: 6; }
+    .project-detail-page .m7 { order: 7; }
+    .project-detail-page .m8 { order: 8; }
+    .project-detail-page .m9 { order: 9; }
+    .project-detail-page .m10 { order: 10; }
+
+    .project-detail-page [class^="m"] {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    /* Ochrana hlavičky detailu na mobilu */
+    .project-detail-page header.row {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        padding: 1rem 0;
+    }
+    .project-detail-page header.row .col-6 {
+        display: block !important;
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+/* 3. OBECNÉ MOBILNÍ RESETRY */
     .col-6 {
         flex: 0 0 100%;
         max-width: 100%;
         padding-right: 0;
-        margin-bottom: 1.5rem;
     }
 
+    /* PŘIDÁNO: Sjednocené odsazení pro celý projekt (obrázek i text) */
+    .project-item {
+        padding: 0 1rem; /* Toto vytvoří mezeru po stranách pro vše uvnitř */
+        margin-bottom: 4rem; /* Mezera mezi projekty pod sebou */
+    }
+
+    /* Resetujeme ty pokusy o roztažení obrázků do krajů */
+    .project-item img {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .scroll-column:first-child { border-right: none; }
     .skill-row { flex-direction: column; }
     .skill-row em { margin-left: 0; text-align: left; }
 }

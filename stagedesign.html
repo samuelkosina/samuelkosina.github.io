@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project Detail</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body class="project-detail-page">
+
+<div class="container">
+
+<div class="nav-spacer"></div>
+
+<header class="row">
+<div class="col-6">
+<a href="../index.html">← Close Project</a>
+</div>
+
+<div class="col-6 col-right" style="text-align:left;">
+<b>Scenic Design</b><br>
+<span class="caption">005 | 2024-NOW</span>
+</div>
+</header>
+
+
+<div class="row">
+
+<!-- LEFT COLUMN -->
+<div class="col-6">
+
+<div class="m2">
+
+<img src="images/INFAMEPHOTO.jpg" alt="Work">
+
+<video autoplay loop muted playsinline style="width:100%;">
+<source src="images/filtr.MP4" type="video/mp4">
+</video>
+
+<img src="images/filtr2.JPG" alt="Work"> 
+<video autoplay loop muted playsinline style="width:100%;">
+<source src="images/in.mp4" type="video/mp4">
+</video>
+<img src="images/filtr.JPG" alt="Work">
+
+
+</div>
+
+<div class="m4">
+<p class="caption">
+authors of the photos and videos — Me and Richard Steinbach
+</p>
+</div>
+
+</div>
+
+
+<!-- RIGHT COLUMN -->
+<div class="col-6">
+
+<div class="m1">
+
+<p>
+I work on stage designs and site-specific scenic installations for cultural events and performances. The projects often involve reusing and transforming materials, giving them a new temporary purpose within each installation.
+</p>
+
+<br>
+
+<p>
+An important part of the work is lighting — operating and programming DMX-controlled systems, building custom lights, and developing live-rendered visuals. I also work with projection mapping and live projections on buildings.
+</p>
+
+<br>
+
+<p>
+I regularly collaborate as a member of several Brno-based collectives and event productions.
+</p>
+<br>
+</div>
+
+
+<div class="m2">
+
+
+<img src="images/in.jpg" alt="Work">
+<img src="images/UNDER.png" alt="Work">
+<img src="images/filtr1.JPG" alt="Work">
+<video autoplay loop muted playsinline style="width:100%;">
+<source src="images/pp.MP4" type="video/mp4">
+</video>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- LIGHTBOX -->
+
+<div id="lightbox" class="lightbox">
+
+<span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+<span class="prev" onclick="changeImage(-1)">&#10094;</span>
+
+<img class="lightbox-content" id="lightbox-img">
+
+<span class="next" onclick="changeImage(1)">&#10095;</span>
+
+</div>
+
+
+<script>
+
+let currentImageIndex = 0;
+
+const images = Array.from(document.querySelectorAll('img'));
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+images.forEach((img, index) => {
+img.onclick = () => {
+currentImageIndex = index;
+openLightbox();
+};
+});
+
+function openLightbox() {
+lightbox.style.display = 'flex';
+lightboxImg.src = images[currentImageIndex].src;
+}
+
+function closeLightbox() {
+lightbox.style.display = 'none';
+}
+
+function changeImage(step) {
+
+currentImageIndex += step;
+
+if (currentImageIndex >= images.length) currentImageIndex = 0;
+if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+
+lightboxImg.src = images[currentImageIndex].src;
+}
+
+lightbox.onclick = (e) => {
+if (e.target === lightbox) closeLightbox();
+};
+
+document.addEventListener('keydown', (e) => {
+
+if (lightbox.style.display === 'flex') {
+
+if (e.key === "ArrowLeft") changeImage(-1);
+if (e.key === "ArrowRight") changeImage(1);
+if (e.key === "Escape") closeLightbox();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>

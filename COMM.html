@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail - Spontaneous Community</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="project-detail-page">
+    <div class="container">
+        <div class="nav-spacer"></div> 
+
+        <header class="row">
+            <div class="col-6"><a href="../index.html">← Close Project</a></div>
+            <div class="col-6 col-right" style="text-align: left;"> <b>Spontaneous Community</b><br>
+                <span class="caption">007 | 2024</span>
+            </div>
+        </header>
+
+        <div class="row">
+            <div class="col-6">
+                <div class="m2">
+                    <img src="images/COMM.png" alt="Work" style="width: 100%; display: block; margin: 0 auto 1rem auto;">
+                </div>
+
+                <div class="m4">
+                    <br>
+                    <img src="images/COMM9.png" alt="Work">
+                    <img src="images/COMM11.png" alt="Work">
+                    <img src="images/COMM12.png" alt="Work">
+                </div>
+
+                <div class="m6">
+                    <br>
+                    <img src="images/COMMM.png" alt="Work">
+                </div>
+
+                <div class="m7">
+                    <br>
+                    <p class="caption">2025<br> The project was developed under the guidance of Kristien Ring, Dipl.Ing. Architektin, Ing. arch. Adela Šoborová and Ing. arch. Anna Kotlabová</p>
+                    <br>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="m1">
+                    <br>
+                    <p>
+                        This studio project explores the Kraví Hora area in Brno, analyzing its existing conditions, identifying challenges, and highlighting the value of its creative community. The work focuses on understanding where to begin interventions and proposes the first key steps to activate the area, support social interactions, and strengthen community life.
+                    </p>
+                    <br>
+                </div>
+
+                <div class="m3">
+                    <p><strong>Creative Community</strong></p>
+                    <br>
+                    <p>
+                        Creative communities often emerge spontaneously, and it is important to preserve and support them when needed. In this case, the threat of disappearance strengthened the local community and revealed its value.
+                    </p>
+                    <br>
+                    <p>
+                        By creating spaces designed for social interaction and opening the area to the public, artists are given opportunities to present their work and engage with a broader audience.
+                    </p>
+                    <br>
+                    <p>
+                        This project examines an underused area near the city center that remains physically and socially disconnected despite its strong spatial potential. At its core is a spontaneously emerging creative community whose existence revealed the value of the site and the importance of preserving such fragile ecosystems.
+                    </p>
+                    <br>
+                    <p>
+                        The proposal responds by identifying the first necessary steps for activation. Extending the park axis into the site reconnects it to the wider urban context, while removing barriers between buildings allows the spaces in between to become shared and active. Improved circulation, new openings, and the possibility to move around the buildings support social interaction and visibility.
+                    </p>
+                    <br>
+                    <p>
+                        A gradual transition from public to private ensures that the intervention strengthens the community without disturbing the existing atmosphere. Rather than introducing large-scale changes, the project works through precise spatial adjustments that enable connection, accessibility, and collective use.
+                    </p>
+                    <br>
+                    <p><strong>Design Principles</strong></p>
+                    <br>
+                    <p>
+                        The proposal is guided by several key principles: improving circulation around the buildings, increasing permeability through new openings, activating the spaces between structures, and creating a gradual transition from public to private areas.
+                    </p>
+                    <br>
+                    <p>
+                        Working with the existing structural module ensures feasibility, while minimal spatial interventions allow the area to evolve without losing its identity.
+                    </p>
+                </div>
+
+                <div class="m5">
+                    <br>
+                    <img src="images/COMM5.png" alt="Work">
+                    <img src="images/COMM1.png" alt="Work">
+                    <img src="images/COMM2.png" alt="Work">
+                    <img src="images/COMM3.png" alt="Work">
+                </div>
+            </div>
+        </div> </div> <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <span class="next" onclick="changeImage(1)">&#10095;</span>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentImageIndex = 0;
+            // Výběr všech obrázků uvnitř sloupců
+            const images = Array.from(document.querySelectorAll('.col-6 img'));
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+
+            images.forEach((img, index) => {
+                img.style.cursor = 'pointer';
+                img.onclick = () => {
+                    currentImageIndex = index;
+                    openLightbox();
+                };
+            });
+
+            function openLightbox() {
+                lightbox.style.display = 'flex';
+                lightboxImg.src = images[currentImageIndex].src;
+            }
+
+            window.closeLightbox = function() {
+                lightbox.style.display = 'none';
+            }
+
+            window.changeImage = function(step) {
+                currentImageIndex += step;
+                if (currentImageIndex >= images.length) currentImageIndex = 0;
+                if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+                lightboxImg.src = images[currentImageIndex].src;
+            }
+
+            lightbox.onclick = (e) => {
+                if (e.target === lightbox) closeLightbox();
+            };
+
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.style.display === 'flex') {
+                    if (e.key === "ArrowLeft") changeImage(-1);
+                    if (e.key === "ArrowRight") changeImage(1);
+                    if (e.key === "Escape") closeLightbox();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

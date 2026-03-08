@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body class="project-detail-page">
+    <div class="container">
+        <div class="nav-spacer"></div> 
+
+        <header class="row">
+            <div class="col-6"><a href="../index.html">← Close Project</a></div>
+            <div class="col-6 col-right" style="text-align: left;"> <b> Light for the INFAME RADIO.</b> <br>
+                <span class="caption">005 | 2026</span>
+            </div>
+        </header>
+
+       <div class="row">
+    <div class="col-6">
+       <div class="m2">
+       <br>
+       
+          <img src="images/INFAMEPOSTER.png" alt="Work">
+      
+              <img src="images/INFAME3.JPG" alt="Work">
+
+                <img src="images/INFAMEPHOTO.jpg" alt="Work">
+
+              <img src="images/INFAMEPHOTO2.png" alt="Work">
+      
+      
+              <img src="images/INFAME4.JPG" alt="Work">
+              </div>
+
+</div>
+    <div class="col-6">
+        <div class="m1">
+        <br>
+      <p>
+    <strong><a href="https://infameradio.com" target="_blank">Infame Radio</a></strong>  is a community radio platform based in Brno, CZ, located within <strong><a href="https://www.instagram.com/vitamin61500/?hl=cs" target="_blank">Vitamin</a></strong> — a community center currently in development and connected to a café. This ongoing project began with the design of a light for the radio booth and gradually expanded into a broader lighting concept for the entire space. Currently, we are developing prototype lamps that will be introduced as stage design during the Infame Radio festival in March 2026. The project continues toward finalizing the lighting objects for their permanent placement within Vitamin. The project is developed in collaboration with Jovana Kalajdžić.
+</p>
+
+
+
+              <img src="images/INFAME2.png" alt="Work">
+         <img src="images/INFAME12.png" alt="Work">
+         <img src="images/INFAMESKETCH.png" alt="Work">
+         <img src="images/INFAMESTAGE.png" alt="Work">
+   
+   
+</p>
+</div>
+    </div>
+</div>
+        </div>
+    </div>
+   <div id="lightbox" class="lightbox">
+    <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+    <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+    <img class="lightbox-content" id="lightbox-img">
+    <span class="next" onclick="changeImage(1)">&#10095;</span>
+</div>
+
+<script>
+    let currentImageIndex = 0;
+    const images = Array.from(document.querySelectorAll('.col-6 img'));
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+
+    // Otevření lightboxu na konkrétním obrázku
+    images.forEach((img, index) => {
+        img.onclick = () => {
+            currentImageIndex = index;
+            openLightbox();
+        };
+    });
+
+    function openLightbox() {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = images[currentImageIndex].src;
+    }
+
+    function closeLightbox() {
+        lightbox.style.display = 'none';
+    }
+
+    function changeImage(step) {
+        currentImageIndex += step;
+        // Loop: pokud jsme na konci, jdi na začátek a naopak
+        if (currentImageIndex >= images.length) currentImageIndex = 0;
+        if (currentImageIndex < 0) currentImageIndex = images.length - 1;
+        
+        lightboxImg.src = images[currentImageIndex].src;
+    }
+
+    // Zavření kliknutím mimo obrázek
+    lightbox.onclick = (e) => {
+        if (e.target === lightbox) closeLightbox();
+    };
+
+    // Podpora klávesnice (šipky a Esc)
+    document.addEventListener('keydown', (e) => {
+        if (lightbox.style.display === 'flex') {
+            if (e.key === "ArrowLeft") changeImage(-1);
+            if (e.key === "ArrowRight") changeImage(1);
+            if (e.key === "Escape") closeLightbox();
+        }
+    });
+</script>
+</body>
+</html>
+        </div>
+    </div>
+</body>
+</html>
