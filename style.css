@@ -29,13 +29,11 @@ body.index-page .main-layout {
 a { text-decoration: none; color: inherit; }
 a:hover { color: rgba(0,0,0,0.4); }
 
-/* --- SPOLEČNÉ PRVKY --- */
-/* Přidali jsme 'video' k obrázkům, aby měly stejné chování i mezery */
 img, video { 
     width: 100%; 
     height: auto; 
     display: block; 
-    margin-bottom: 1rem; /* Tato hodnota určuje mezeru mezi nimi */
+    margin-bottom: 1rem; 
 }
 
 hr {
@@ -178,42 +176,44 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
 /* --- MOBILNÍ VERZE (RESPONZIVITA) --- */
 @media (max-width: 768px) {
     
-    /* 1. OPRAVA INDEXU */
     body.index-page { overflow-y: auto !important; height: auto !important; }
     body.index-page .main-layout { height: auto; }
     .dual-scroll-container { display: grid; grid-template-columns: 1fr; height: auto; overflow: visible; }
     .scroll-column { display: contents; }
     
-/* DEFINICE POŘADÍ NA MOBILU */
+    /* DEFINICE POŘADÍ NA MOBILU (UPDATED) */
 
-/* 1. Cars... (Levý sloupec, 1. projekt) */
-.scroll-column:first-child .project-item:nth-child(1) { order: 1; } 
+    /* 1. Cars... (Levý sloupec, 1. projekt) */
+    .scroll-column:first-child .project-item:nth-child(1) { order: 1; } 
 
-/* 2. Palimpsest (Pravý sloupec, 1. projekt) */
-.scroll-column:last-child  .project-item:nth-child(1) { order: 2; } 
+    /* 2. Palimpsest (Pravý sloupec, 1. projekt) */
+    .scroll-column:last-child  .project-item:nth-child(1) { order: 2; } 
 
-/* 3. Home, not a Home (Levý sloupec, 2. projekt) */
-.scroll-column:first-child .project-item:nth-child(2) { order: 3; } 
+    /* 3. Home, not a Home (Levý sloupec, 2. projekt) */
+    .scroll-column:first-child .project-item:nth-child(2) { order: 3; } 
 
-/* 4. Urban Forensics (Pravý sloupec, 2. projekt) */
-.scroll-column:last-child  .project-item:nth-child(2) { order: 5; } 
+    /* 4. Home, not an Institution (Levý sloupec, 3. projekt) */
+    .scroll-column:first-child .project-item:nth-child(3) { order: 4; } 
 
-/* 5. Home, not an Institution (Levý sloupec, 3. projekt) */
-.scroll-column:first-child .project-item:nth-child(3) { order: 4; } 
+    /* 5. Urban Forensics (Pravý sloupec, 2. projekt) */
+    .scroll-column:last-child  .project-item:nth-child(2) { order: 5; } 
 
-/* 6. Infame Radio (Pravý sloupec, 3. projekt) */
-.scroll-column:last-child  .project-item:nth-child(3) { order: 6; }
+    /* 6. Infame Radio (Pravý sloupec, 3. projekt) */
+    .scroll-column:last-child  .project-item:nth-child(3) { order: 6; }
 
-/* 7. Scenic Design (Pravý sloupec, 4. projekt) */
-.scroll-column:last-child  .project-item:nth-child(4) { order: 7; }
+    /* 7. Hanoi House (Levý sloupec, 4. projekt) */
+    .scroll-column:first-child .project-item:nth-child(4) { order: 7; }
 
-/* 8. Spontaneous Community (Pravý sloupec, 5. projekt) */
-.scroll-column:last-child  .project-item:nth-child(5) { order: 8; }
+    /* 8. Scenic Design (Pravý sloupec, 4. projekt) */
+    .scroll-column:last-child  .project-item:nth-child(4) { order: 8; }
 
-/* 9. Home Office (Pravý sloupec, 6. projekt) */
-.scroll-column:last-child  .project-item:nth-child(6) { order: 9; }
-    /* 2. OPRAVA DETAILU PROJEKTU (M-bloky) */
-    /* Aktivuje se jen v souborech s <body class="project-detail-page"> */
+    /* 9. Spontaneous Community (Levý sloupec, 5. projekt) */
+    .scroll-column:first-child .project-item:nth-child(5) { order: 9; }
+
+    /* 10. Home Office / Fallback (Pravý sloupec, 5. projekt) */
+    .scroll-column:last-child  .project-item:nth-child(5) { order: 10; }
+
+    /* OPRAVA DETAILU PROJEKTU */
     .project-detail-page .row {
         display: flex !important;
         flex-direction: column !important;
@@ -223,7 +223,6 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
         display: contents !important; 
     }
 
-    /* Definice pořadí na mobilu */
     .project-detail-page .m1 { order: 1; }
     .project-detail-page .m2 { order: 2; }
     .project-detail-page .m3 { order: 3; }
@@ -240,7 +239,6 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
         padding: 0 1rem;
     }
 
-    /* Ochrana hlavičky detailu na mobilu */
     .project-detail-page header.row {
         display: flex !important;
         flex-direction: row !important;
@@ -253,20 +251,18 @@ header.header a:nth-child(3), .header-content a:nth-child(3) { justify-self: end
         max-width: 50% !important;
     }
 
-/* 3. OBECNÉ MOBILNÍ RESETRY */
+    /* OBECNÉ MOBILNÍ RESETRY */
     .col-6 {
         flex: 0 0 100%;
         max-width: 100%;
         padding-right: 0;
     }
 
-    /* PŘIDÁNO: Sjednocené odsazení pro celý projekt (obrázek i text) */
     .project-item {
-        padding: 0 1rem; /* Toto vytvoří mezeru po stranách pro vše uvnitř */
-        margin-bottom: 4rem; /* Mezera mezi projekty pod sebou */
+        padding: 0 1rem; 
+        margin-bottom: 4rem; 
     }
 
-    /* Resetujeme ty pokusy o roztažení obrázků do krajů */
     .project-item img {
         margin-left: 0;
         width: 100%;
